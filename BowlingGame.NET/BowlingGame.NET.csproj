@@ -67,7 +67,6 @@
     <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\Roll.cs" />
-    <Compile Include="test\GameTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
