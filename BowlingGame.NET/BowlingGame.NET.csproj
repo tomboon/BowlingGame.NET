@@ -62,6 +62,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\GameFactory.cs" />
+    <Compile Include="src\TripleFrame.cs" />
     <Compile Include="src\Frame.cs" />
     <Compile Include="src\Game.cs" />
     <Compile Include="src\Program.cs" />

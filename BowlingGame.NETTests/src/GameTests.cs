@@ -11,7 +11,7 @@ namespace BowlingGame.NET.src.Tests
         [TestInitialize()]
         public void before()
         {
-            game = new Game();
+            game = new GameFactory().create();
         }
 
         private void rollPins(int times, int pins)

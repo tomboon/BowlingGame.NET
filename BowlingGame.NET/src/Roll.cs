@@ -1,13 +1,23 @@
 ﻿namespace BowlingGame.NET.src
 {
-    class Roll
+    internal class Roll
     {
+        public int pins { get; }
+
         public Roll(int pins)
         {
             this.pins = pins;
+        }      
+
+        public bool IsGutterBall()
+        {
+            return pins == 0;
         }
 
-        public int pins { get; }
+        public bool IsStrike()
+        {
+            return 10 == pins;
+        }
 
     }
 }
