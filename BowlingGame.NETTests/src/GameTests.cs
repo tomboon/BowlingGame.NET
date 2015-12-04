@@ -1,73 +1,68 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
+using BowlingGame.NET;
 
-namespace BowlingGame.NET.src.Tests
+namespace BowlingGame.NETTests
 {
     [TestClass()]
     public class GameTests
     {
-        private Game game;
+        private readonly Game _game = new GameFactory().Create();
 
-        [TestInitialize()]
-        public void before()
+        private void RollPins(int times, int pins)
         {
-            game = new GameFactory().create();
-        }
-
-        private void rollPins(int times, int pins)
-        {
-            Enumerable.Range(1, times).ToList().ForEach((index) => game.Roll(pins)); ;
+            Enumerable.Range(1, times).ToList().ForEach((index) => _game.Roll(pins)); ;
         }
 
         [TestMethod()]
-        public void rollTest_allZero()
+        public void RollTest_allZero()
         {
-            rollPins(20, 0);
-            Assert.AreEqual(0, game.Score());
+            RollPins(20, 0);
+            Assert.AreEqual(0, _game.Score());
         }
 
         [TestMethod()]
-        public void rollTest_allOne()
+        public void RollTest_allOne()
         {
-            rollPins(20, 1);
-            Assert.AreEqual(20, game.Score());
+            RollPins(20, 1);
+            Assert.AreEqual(20, _game.Score());
         }
 
         [TestMethod()]
-        public void rollTest_oneSpare()
+        public void RollTest_oneSpare()
         {
             RollSpare();
-            game.Roll(3);
-            rollPins(17, 0);
-            Assert.AreEqual(16, game.Score());
+            _game.Roll(3);
+            RollPins(17, 0);
+            Assert.AreEqual(16, _game.Score());
         }     
 
         [TestMethod()]
-        public void rollTest_oneStrike()
+        public void RollTest_oneStrike()
         {
-            rollStrike(); // strike
-            game.Roll(3);
-            game.Roll(4);
-            rollPins(16, 0);
-            Assert.AreEqual(24, game.Score());
+            RollStrike();
+            _game.Roll(3);
+            _game.Roll(4);
+            RollPins(16, 0);
+            Assert.AreEqual(24, _game.Score());
         }
 
         [TestMethod()]
-        public void rollTest_PerfectGame()
+        public void RollTest_PerfectGame()
         {
-            rollPins(12,10);
-            Assert.AreEqual(300, game.Score());
+            RollPins(12,10);
+            Assert.AreEqual(300, _game.Score());
         }
 
-        private void rollStrike()
+        private void RollStrike()
         {
-            game.Roll(10);
+            _game.Roll(10);
         }
 
         private void RollSpare()
         {
-            game.Roll(5);
-            game.Roll(5);
+            _game.Roll(5);
+            _game.Roll(5);
         }
 
     }

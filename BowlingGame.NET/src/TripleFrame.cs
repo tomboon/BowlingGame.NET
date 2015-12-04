@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 
-namespace BowlingGame.NET.src
+namespace BowlingGame.NET
 {
-    internal class TripleFrame : Frame
+    public class TripleFrame : Frame
     {
         internal TripleFrame() : base(null) { }
         
@@ -10,7 +10,7 @@ namespace BowlingGame.NET.src
         {   
             if (IsStrike() || IsSpare())
             {
-                return base.Rolls.Count() == 3;
+                return Rolls.Count() == 3;
             }
             return base.Rolls.Count() == 2;
         }
@@ -22,7 +22,7 @@ namespace BowlingGame.NET.src
 
         protected override int GetStrikeBonusForPreviousFrame()
         {
-            return (Rolls.ElementAtOrDefault(0)?.pins ?? 0) + (Rolls.ElementAtOrDefault(1)?.pins ?? 0);
+            return (Rolls.ElementAtOrDefault(0)?.Pins ?? 0) + (Rolls.ElementAtOrDefault(1)?.Pins ?? 0);
         }
     }
 }

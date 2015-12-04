@@ -1,38 +1,38 @@
 ﻿using System.Linq;
 
-namespace BowlingGame.NET.src
+namespace BowlingGame.NET
 {
     public class Game
     {
-        private Frame[] frames = new Frame[20];
-        private int currentFrameIndex;
+        private readonly Frame[] _frames;
+        private int _currentFrameIndex;
 
-        internal Game(Frame[] frames)
+        public Game(Frame[] frames)
         {
-            this.frames = frames;
-            this.currentFrameIndex = 0;
+            this._frames = frames;
+            this._currentFrameIndex = 0;
         }
 
         public bool Roll(int pins)
         {
             if (IsFinished()) return false;
 
-            frames[currentFrameIndex].Roll(pins);
-            if (frames[currentFrameIndex].IsFrameFinished())
+            _frames[_currentFrameIndex].Roll(pins);
+            if (_frames[_currentFrameIndex].IsFrameFinished())
             {                
-                currentFrameIndex++;
+                _currentFrameIndex++;
             }
             return true;
         }
 
         public bool IsFinished()
         {
-            return currentFrameIndex >= frames.Length;
+            return _currentFrameIndex >= _frames.Length;
         }
 
         public int Score()
         {
-            return frames.Sum(frame => {
+            return _frames.Sum(frame => {
                 System.Diagnostics.Debug.WriteLine("score: " + frame.GetScore());
                 return frame.GetScore();
                 });

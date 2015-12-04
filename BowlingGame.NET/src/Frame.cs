@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BowlingGame.NET.src
+namespace BowlingGame.NET
 {
-    internal class Frame
+    public class Frame
     {
-        private Frame NextFrame;
+        private readonly Frame _nextFrame;
         protected List<Roll> Rolls { get; } = new List<Roll>();
 
-        internal Frame(Frame nextFrame)
+        public Frame(Frame nextFrame)
         {
-            this.NextFrame = nextFrame;
+            this._nextFrame = nextFrame;
         }
         
         public void Roll(int pins)
@@ -27,7 +27,7 @@ namespace BowlingGame.NET.src
                 
         public bool IsSpare()
         {
-            return 10 == (Rolls.ElementAtOrDefault(0)?.pins ?? 0) + (Rolls.ElementAtOrDefault(1)?.pins ?? 0);
+            return 10 == (Rolls.ElementAtOrDefault(0)?.Pins ?? 0) + (Rolls.ElementAtOrDefault(1)?.Pins ?? 0);
         }
 
         public bool IsStrike()
@@ -38,17 +38,17 @@ namespace BowlingGame.NET.src
         public virtual int GetScore()
         {
             if (IsStrike())
-                return GetNumberOfPinsInThisFrame() + NextFrame.GetStrikeBonusForPreviousFrame();
+                return GetNumberOfPinsInThisFrame() + _nextFrame.GetStrikeBonusForPreviousFrame();
 
             if (IsSpare())
-                return GetNumberOfPinsInThisFrame() + NextFrame.GetSpareBonusForPreviousFrame();
+                return GetNumberOfPinsInThisFrame() + _nextFrame.GetSpareBonusForPreviousFrame();
             
             return GetNumberOfPinsInThisFrame();
         }
 
         public int GetNumberOfPinsInThisFrame()
         {
-            return Rolls.Sum(roll => roll.pins);
+            return Rolls.Sum(roll => roll.Pins);
         }
 
         private int GetSpareBonusForPreviousFrame()
@@ -60,14 +60,14 @@ namespace BowlingGame.NET.src
         {
             if (IsStrike())
             {
-                return GetNumberOfPinsInThisFrame() + NextFrame.GetNumberOfPinsOfFirstRoll();
+                return GetNumberOfPinsInThisFrame() + _nextFrame.GetNumberOfPinsOfFirstRoll();
             }
             return GetNumberOfPinsInThisFrame();
         }     
 
         private int GetNumberOfPinsOfFirstRoll()
         {
-            return Rolls.ElementAt(0)?.pins ?? 0;
+            return Rolls.ElementAt(0)?.Pins ?? 0;
         }
 
 

@@ -1,13 +1,13 @@
-﻿namespace BowlingGame.NET.src
+﻿namespace BowlingGame.NET
 {
     public class GameFactory
     {
-        public Game create()
+        public virtual Game Create()
         {
-            Frame[] frames = new Frame[10];
+            var frames = new Frame[10];
 
             frames[9] = new TripleFrame();
-            for (int count = 8; count >= 0; count--)
+            for (var count = 8; count >= 0; count--)
             {
                 frames[count] = new Frame(frames[count + 1]);
             }
