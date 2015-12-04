@@ -7,7 +7,7 @@ namespace BowlingGame.NET
         private readonly Frame[] _frames;
         private int _currentFrameIndex;
 
-        public Game(Frame[] frames)
+        internal Game(Frame[] frames)
         {
             this._frames = frames;
             this._currentFrameIndex = 0;

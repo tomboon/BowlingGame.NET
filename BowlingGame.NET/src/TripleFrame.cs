@@ -2,11 +2,11 @@
 
 namespace BowlingGame.NET
 {
-    public class TripleFrame : Frame
+    internal class TripleFrame : Frame
     {
         internal TripleFrame() : base(null) { }
-        
-        public override bool IsFrameFinished()
+
+        internal override bool IsFrameFinished()
         {   
             if (IsStrike() || IsSpare())
             {
@@ -15,12 +15,12 @@ namespace BowlingGame.NET
             return base.Rolls.Count() == 2;
         }
 
-        public override int GetScore()
+        internal override int GetScore()
         {
             return GetNumberOfPinsInThisFrame();
         }
 
-        protected override int GetStrikeBonusForPreviousFrame()
+        internal override int GetStrikeBonusForPreviousFrame()
         {
             return (Rolls.ElementAtOrDefault(0)?.Pins ?? 0) + (Rolls.ElementAtOrDefault(1)?.Pins ?? 0);
         }

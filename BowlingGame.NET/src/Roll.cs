@@ -1,20 +1,20 @@
 ﻿namespace BowlingGame.NET
 {
-    public class Roll
+    internal class Roll
     {
-        public int Pins { get; }
+        internal int Pins { get; }
 
-        public Roll(int Pins)
+        internal Roll(int pins)
         {
-            this.Pins = Pins;
-        }      
+            this.Pins = pins;
+        }
 
-        public bool IsGutterBall()
+        internal bool IsGutterBall()
         {
             return Pins == 0;
         }
 
-        public bool IsStrike()
+        internal bool IsStrike()
         {
             return 10 == Pins;
         }
