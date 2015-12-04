@@ -7,7 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingGame.NET", "BowlingG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingGame.NETTests", "BowlingGame.NETTests\BowlingGame.NETTests.csproj", "{77EA3490-A9DB-4884-A18F-DCBBC13601B1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{092B4C01-E905-422F-8F85-B5B042F8F218}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "documentation", "documentation", "{092B4C01-E905-422F-8F85-B5B042F8F218}"
+	ProjectSection(SolutionItems) = preProject
+		BowlingGame.NET\Bowling Game Kata.ppt = BowlingGame.NET\Bowling Game Kata.ppt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
